@@ -1,7 +1,7 @@
 \documentclass[11pt,a4paper]{article}
 \usepackage{amsmath,amssymb,geometry,hyperref}
 \geometry{margin=1in}
-\title{Thermodynamic Impossibility of Natural Abiogenesis:\\A Resolution to the Fermi Paradox}
+\title{Disproof of the Fermi Paradox via the Thermodynamic Disprobability of Natural Abiogenesis }
 \author{
   Ünal Ulaş YALINCAK \\
   \small First-Year Undergraduate, Chemical Engineering \\
@@ -14,55 +14,76 @@
 \maketitle
 
 \begin{abstract}
-Using published $\Delta G^\circ$ values, we compute the cumulative probability of abiogenesis under prebiotic conditions. The result, $P < 10^{-260}$, exceeds the total chemical trials in the observable universe ($N \approx 10^{120}$) by $10^{140}$ orders of magnitude. This resolves the Fermi Paradox: life never began elsewhere. We are the anomaly.
+Using published values of $\Delta G^\circ$, we compute the cumulative probability of abiogenesis under prebiotic(before life) conditions. The result, $P < 10^{-260}$, exceeds the total amount of maximum chemical trials in the observable universe ($N \approx 10^{120}$) by $10^{140}$ orders of magnitude. This challenges the first assumption of the Fermi Paradox and makes it statistically improbable not just for intelligent life but life in general to exist. Summary: Life will likely never begin elsewhere and will not begin even in the distant future. We are a probabilistic anomaly.
 \end{abstract}
 
 \section{Introduction}
 Fermi (1950): ``Where is everybody?''  
-Answer: \textbf{Step 1 failed.}  
-Abiogenesis is not rare — it is \textbf{thermodynamically forbidden} on cosmic scales.
+Answer: \textbf{Step 1 aka LIFE getting produced by sheer probability failed.}  
+Abiogenesis is not just rare — it is \textbf{orders of magnitudes above in improbability} even on cosmic scales.
 
-\section{Probability Chain}
+\section{(Im)Probability Chain}
 For each reaction $A \to B$:
 \[
 P_i = e^{-\Delta G_i^\circ / RT}, \quad T=298\,\text{K}, \quad R=8.314\,\text{J/mol·K}
 \]
-Using standard values \cite{lehninger,voet}:
+
+Using standard values \cite{lehninger,miller}:
+ 
+With Gibbs Free Energy Equation:
+\[
+\Delta G = \Delta H - T \Delta S
+\]
+And since:
+\[
+\ln \Omega = \frac{\Delta S}{R}
+\]
+With $\Omega$ being the number of microstates (entropy in terms of probability).
 
 \begin{itemize}
     \item Amino acid formation (e.g., glycine): $\Delta G^\circ \approx +30\,\text{kJ/mol}$ $\to P \approx 10^{-5}$
-    \item 20-mer peptide (correct chirality): $(10^{-2})^{20} = 10^{-40}$
+    \item 20-mere peptide (also correct chirality): $(10^{-2})^{20} = 10^{-40}$
     \item Functional enzyme (100 aa, folded): $10^{-130}$
     \item Self-replicating RNA: $10^{-40}$
-    \item Lipid bilayer + metabolism: $10^{-50}$
+    \item Lipid bilayer(double wrapped di-lipids) + metabolism: $10^{-50}$
 \end{itemize}
 
-\textbf{Cumulative}: $P < 10^{-5} \times 10^{-40} \times \cdots = \mathbf{10^{-260}}$
+\textbf{Cumulative}: $P < 10^{-5} \times 10^{-40} \times \cdots = 
+\textbf{lesser than }
+\mathbf{10^{-260}}$
 
-\section{Cosmic Trial Budget}
+\section{Maximum Amount Of Cosmic Trials}
 \[
 N = N_{\text{atoms}} \times r_{\text{rxn/s}} \times t_{\text{univ}}
-= 10^{80} \times 10^{23} \times 10^{17} \approx \mathbf{10^{120}}
+= 10^{80} \times 10^{23} \times 10^{17} \approx 10^{120}
 \]
 
-\textbf{Gap}:  
+\textbf{Expected successes in one universe}:
 \[
-\frac{P}{N} < 10^{-260} / 10^{120} = \mathbf{10^{-380}}
+\mathbb{E}[\text{successes}] = P \cdot N < 10^{-260} \times 10^{120} = \mathbf{10^{-140}}
 \]
 
-Even in $10^{100}$ universes: still $10^{-280}$.
+\textbf{True probability of at least one success}:
+\[
+1 - (1 - P)^N \approx P \cdot N = \mathbf{10^{-140}}
+\]
+
+Even in $10^{100}$ universes: still $\mathbf{10^{-40}}$ — $\textbf{effectively zero.}$
 
 \section{Conclusion}
-Life is not ``rare.''  
-It is \textbf{statistically impossible}.  
-We exist. Therefore:  
-\begin{center}
-\textbf{We are the exception. The Great Filter is Step 1.}
-\end{center}
+Life is not “rare.”  
+It is $\textbf{statistically ZERO}$ until heat death.  
+But we exist.
+
+Therefore:
+
+\textbf{We are the exception. The Great Filter is at Step 1.}
+
 
 \begin{thebibliography}{9}
 \bibitem{lehninger} Lehninger, A. L. (2017). \textit{Principles of Biochemistry}.
 \bibitem{voet} Voet, D. (2011). \textit{Fundamentals of Biochemistry}.
+\bibitem{miller} Miller, S. L. (1953). Science, 117(3046), 528–529.
 \end{thebibliography}
 
 \end{document}
