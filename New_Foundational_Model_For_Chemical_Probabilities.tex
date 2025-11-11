@@ -1,0 +1,188 @@
+\documentclass{article}
+\usepackage[a4paper,margin=1in]{geometry}   % good layout
+\usepackage{microtype}                      % improves spacing automatically
+\usepackage{times}                          % cleaner, journal-style font
+\usepackage{booktabs}                       % for clean tables (future data)
+\usepackage{graphicx}
+\usepackage{amsmath, amssymb, amsfonts}
+\usepackage{siunitx}        % for physical units
+\usepackage{physics}        % for operators like \dv, \pdv, etc.
+\usepackage{hyperref}       % for clickable references
+\usepackage{natbib}         % for citations
+\usepackage{caption}
+\usepackage{parskip}         % removes paragraph indentation, adds space between paragraphs
+\linespread{1.1}             % slightly increases line spacing for readability
+
+\usepackage{fancyhdr}        % for page headers
+\pagestyle{fancy}
+\fancyhead[L]{Thermodynamic Probability in Prebiotic Systems}
+\fancyhead[R]{Yalıncak, 2025}
+\fancyfoot[C]{\thepage}
+
+\usepackage{orcidlink}       % optional: ORCID icon next to your name
+
+
+% --- Fix \qty warning from siunitx + physics conflict ---
+\AtBeginDocument{\RenewCommandCopy\qty\SI}
+
+\begin{document}
+
+\title{Thermodynamic Probability and Reaction Kinetics in Prebiotic Systems}
+\author{Ünal Ulaş YALINCAK\,\orcidlink{0009-0004-9063-3852}\\
+\small Independent Researcher\\
+\small \texttt{unal.yalincak@std.bogazici.edu.tr}}
+\date{\today}
+\maketitle
+
+\noindent\textbf{Keywords:} Abiogenesis, Thermodynamics, Reaction kinetics, Statistical mechanics, Probability theory
+
+\begin{abstract}
+This paper models the thermodynamic and kinetic feasibility of prebiotic chemical reactions by connecting entropy change, Gibbs free energy, and microstate probability. The framework provides a quantitative link between molecular reaction rates and statistical thermodynamics, enabling estimation of the likelihood of complex molecule formation under early Earth conditions.
+\end{abstract}
+
+\section{Introduction}
+Abiogenesis can be approached as a statistical thermodynamic process \citep{eigen1971self, smith2021abiogenesis} , where the formation of complex molecules depends on both the microstate probability and the energy landscape of the surrounding medium. The present work formulates this connection using entropy, Gibbs free energy, and reaction-rate theory \citep{atkins2010physical}.
+
+
+\section{Methods}
+
+\subsection{Thermodynamic Foundation}
+The statistical behavior of prebiotic chemical systems was modeled by relating entropy change (\( \Delta S \)) to the ratio of accessible microstates before and after a reaction:
+\begin{equation}
+\Delta S = k_B \ln \left( \frac{\Omega_f}{\Omega_i} \right),
+\end{equation}
+where \( \Omega_i \) and \( \Omega_f \) represent the number of accessible microstates in the initial and final states, respectively.
+A negative \( \Delta S \) corresponds to an ordering process—consistent with the thermodynamic cost of molecular self-organization.
+
+\subsection{Gibbs Energy and Reaction Directionality}
+The thermodynamic feasibility of each reaction was expressed as:
+\begin{equation}
+\Delta G = \Delta H - T \Delta S,
+\end{equation}
+and the relative probability of the forward and reverse processes follows the Boltzmann relation:
+\begin{equation}
+\frac{P_{\text{forward}}}{P_{\text{reverse}}} = 
+\exp\left(-\frac{\Delta G}{R T}\right).
+\end{equation}
+
+\subsection{Reaction Probability and Kinetic Scaling}
+The per-collision probability of reaction was defined as:
+\begin{equation}
+P_{\text{react}} = \frac{k_{\text{actual}}}{k_{\text{max}}},
+\end{equation}
+where \( k_{\text{max}} \) is the diffusion-limited maximum rate constant 
+(\numrange{1e9}{1e10}~\si{M^{-1}.s^{-1}}).
+From transition-state theory \citep{atkins2010physical},
+\begin{align}
+k_{\text{actual}} &= \kappa \frac{k_B T}{h}
+  \exp\left(-\frac{\Delta G^\ddagger}{R T}\right), \\
+P_{\text{react}} &= 
+C\, \exp\left(-\frac{\Delta G^\ddagger}{R T}\right), \quad
+C = \frac{\kappa k_B T}{h k_{\text{max}}}.
+\end{align}
+This expresses the fraction of collisions that overcome the activation barrier.
+
+\subsection{Computational and Analytical Implementation}
+All thermodynamic quantities were evaluated symbolically using macroscopic variables
+(\( \Delta H, T, k_{\text{max}} \)) and estimated molecular parameters
+(\( \Delta G^\ddagger \), diffusion coefficients).
+The framework can be extended to multi-step prebiotic reaction networks
+to obtain probability distributions of feasible reaction pathways.
+
+\subsection{Numerical Illustration}
+To demonstrate consistency between thermodynamic, kinetic, and activation–energy formulations, three representative examples were computed.
+
+\paragraph{(a) From $\Delta H$ and $\Delta S$.}
+\begin{align}
+\Delta G &= \Delta H - T\Delta S,\\
+P_{\text{thermo}} &= \exp\!\left(-\frac{\Delta G}{RT}\right),
+\end{align}
+for peptide–bond formation at 298~K
+($\Delta H=21\,\si{kJ.mol^{-1}}$, $\Delta S=-120\,\si{J.mol^{-1}.K^{-1}}$) \citep{atkins2010physical}
+gives
+$\Delta G=56.8\,\si{kJ.mol^{-1}}$ and
+$P_{\text{thermo}}\approx1.1\times10^{-10}$.
+
+\paragraph{(b) From reaction rates.}
+\begin{equation}
+P_{\text{react}}=\frac{k_{\text{actual}}}{k_{\text{max}}},
+\end{equation}
+with $k_{\text{actual}}=10^{3}$ and $k_{\text{max}}=10^{9}$
+($\si{M^{-1}.s^{-1}}$) yields $P_{\text{react}}=10^{-6}$.
+
+\paragraph{(c) From activation free energy.}
+\begin{align}
+P_{\text{react}} &= C\,\exp\!\left(-\frac{\Delta G^\ddagger}{RT}\right),\\
+C &= \frac{k_BT}{h k_{\text{max}}},
+\end{align}
+and for $\Delta G^\ddagger=75\,\si{kJ.mol^{-1}}$, $T=298~\si{K}$,
+one obtains $C=6.2\times10^{-3}$ and
+$P_{\text{react}}\approx5.5\times10^{-16}$.
+
+
+\section{Results and Discussion}
+
+
+The model predicts that reaction probability depends exponentially on both temperature and activation free energy. A modest temperature increase from 280 K to 360 K (Fig.~\ref{fig:Preact_T}) raises by nearly six orders of magnitude. This demonstrates the strong thermokinetic sensitivity of molecular self-organization to thermal gradients.
+\vspace{1em}
+
+Figure~\ref{fig:Preact_DG} confirms that decreasing $\Delta G^\ddagger$ by only 20~kJ~mol$^{-1}$ enhances the probability by approximately five orders of magnitude. Such behavior suggests that even slight catalytic or environmental reductions in barrier height could dramatically accelerate prebiotic synthesis.
+
+\vspace{1em}
+The exponential dependence of reaction probability on temperature agrees with classical Boltzmann statistics \citep{atkins2010physical} and with thermodynamic interpretations of molecular self-organization \citep{eigen1971self}. Such exponential sensitivity supports the hypothesis that local thermal gradients could facilitate prebiotic synthesis, as previously proposed by \citet{smith2021abiogenesis}.
+
+
+\section{Conclusion}
+
+The presented model unifies microstate probability, Gibbs free energy, and reaction kinetics within a single statistical framework. Such an approach may offer predictive insight into the environmental and energetic constraints of early prebiotic chemistry.
+
+\section{Validation and Future Work}
+Future studies will incorporate experimental reaction-rate data and molecular
+dynamics simulations to validate the probabilistic predictions presented here.
+In particular, comparing computed $P_{\text{react}}$ values with measured rate
+constants in condensation and polymerization reactions will test whether
+microstate-based probability scaling correctly reproduces empirical kinetics.
+
+\section{Graphs and Data}
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{Figure_1.png}
+\caption{Temperature dependence of the reaction probability $P_{\text{react}}$
+calculated for $\Delta G^\ddagger = 75~\si{kJ.mol^{-1}}$ and 
+$k_{\text{max}} = 10^9~\si{M^{-1}.s^{-1}}$. 
+The semilog plot illustrates the exponential increase in probability with temperature, 
+consistent with the Boltzmann factor dependence $P_{\text{react}} \propto e^{-\Delta G^\ddagger / RT}$.}
+\label{fig:Preact_T}
+\end{figure}
+
+
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.7\textwidth]{Figure_2.png}
+\caption{Dependence of the reaction probability on the activation free energy 
+$\Delta G^\ddagger$ at $T=298~\si{K}$. 
+Higher energy barriers reduce $P_{\text{react}}$ exponentially, 
+highlighting the sensitivity of prebiotic kinetics to catalytic or environmental effects.}
+\label{fig:Preact_DG}
+\end{figure}
+
+\begin{figure}[htbp]
+\centering
+\includegraphics[width=0.75\textwidth]{Figure_3.png}
+\caption{Contour plot showing the combined influence of enthalpy and entropy
+on the thermodynamic reaction probability 
+$P_{\text{thermo}} = \exp[-(\Delta H - T\Delta S)/(RT)]$.
+Regions of high probability (yellow) correspond to energetically favorable
+and entropy-driven reactions, illustrating the interplay between
+enthalpic and entropic factors in prebiotic chemistry.}
+\label{fig:Preact_Landscape}
+\end{figure}
+
+\newpage
+
+\bibliographystyle{unsrtnat}
+
+\bibliography{references}
+
+\end{document}
